@@ -14,7 +14,7 @@
 
 ## Website
 
-https://ccd330.github.io/coding-quiz/
+https://ccd330.github.io/workday/
 
 ## Contribution
 
