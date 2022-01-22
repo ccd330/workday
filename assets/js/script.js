@@ -12,4 +12,18 @@
 //WHEN I refresh the page
 //THEN the saved events persist
 
-var today = moment.();
+var today = moment().format("dddd, MMM Do YYYY");
+
+//display date
+document.getElementById("currentDay").textContent = today;
+
+//save tasks on click
+var saveBtn = document.getElementById("col-1 saveBtn");
+saveBtn.onclick = saveTasks;
+
+//set tasks to localStorage
+var saveTasks = function () {
+  var textItem = document.getElementsById("1").value;
+  localStorage.setItem("textItem", textItem);
+  var storedItem = localStorage.getItem("textItem");
+};
