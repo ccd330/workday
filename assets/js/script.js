@@ -16,21 +16,13 @@
 var today = moment().format("dddd, MMM Do YYYY");
 document.getElementById("currentDay").textContent = today;
 
-//save tasks on click
-var saveBtn = document.getElementById("col-1 saveBtn");
-saveBtn.onclick = saveTasks;
+//click event for save button
+$(".saveBtn").on("click", function () {
+  var text = $(this).siblings(".description").val();
+  var time = $(this).parent().attr("id");
 
-//set tasks to localStorage
-var saveTasks = function () {
-  var textItem = document.getElementsById("1").value;
-  localStorage.setItem("textItem", textItem);
-};
-
-//load tasks
-var loadTasks = function () {
-  var textItem = localStorage.getItem("textItem");
-  document.getElementById("1").value = textContent;
-};
+  localStorage.setItem(time, text);
+});
 
 //different colored times
 function timeTracker() {
@@ -57,3 +49,6 @@ function timeTracker() {
     }
   });
 }
+
+// call function
+timeTracker();
