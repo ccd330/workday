@@ -12,9 +12,8 @@
 //WHEN I refresh the page
 //THEN the saved events persist
 
-var today = moment().format("dddd, MMM Do YYYY");
-
 //display date
+var today = moment().format("dddd, MMM Do YYYY");
 document.getElementById("currentDay").textContent = today;
 
 //save tasks on click
@@ -25,5 +24,36 @@ saveBtn.onclick = saveTasks;
 var saveTasks = function () {
   var textItem = document.getElementsById("1").value;
   localStorage.setItem("textItem", textItem);
-  var storedItem = localStorage.getItem("textItem");
 };
+
+//load tasks
+var loadTasks = function () {
+  var textItem = localStorage.getItem("textItem");
+  document.getElementById("1").value = textContent;
+};
+
+//different colored times
+function timeTracker() {
+  //get current number of hours.
+  var timeNow = moment().hour();
+
+  // loop over time blocks
+  $(".time-block").each(function () {
+    var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+
+    // To check the time and add the classes for background indicators
+    if (blockTime < timeNow) {
+      $(this).removeClass("future");
+      $(this).removeClass("present");
+      $(this).addClass("past");
+    } else if (blockTime === timeNow) {
+      $(this).removeClass("past");
+      $(this).removeClass("future");
+      $(this).addClass("present");
+    } else {
+      $(this).removeClass("present");
+      $(this).removeClass("past");
+      $(this).addClass("future");
+    }
+  });
+}
